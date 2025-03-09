@@ -29,11 +29,11 @@ const styles = {
       color: '#6B7280', 
     },
     memberStatus: {
-      width: "70px",
-      height: "25px",
+      width: "65px",
+      height: "22px",
       backgroundColor: "#eacefe",
       color: "#000",
-      fontSize: "0.7em",
+      fontSize: "0.6em",
       fontWeight: 600
     },
     taskLabel: {

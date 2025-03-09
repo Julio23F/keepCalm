@@ -1,13 +1,12 @@
-import Avatar from '@mui/material/Avatar';
 import { 
     ChevronRight
 } from 'lucide-react';
-import { Typography } from '@mui/material';
+import { Typography, IconButton, Avatar } from '@mui/material';
 import { createUseStyles } from "react-jss";
 import styles from './card-jss'; 
 const useStyles = createUseStyles(styles);
 
-const ProjectCard = ({category}) => {
+const ProjectCard = ({category, onClick}) => {
     const classes = useStyles();
 
     const capitalizeFirstLetter = (str) => {
@@ -17,14 +16,15 @@ const ProjectCard = ({category}) => {
         <div
             key={"index"}
             className={classes.projectCard}
+            onClick={onClick}
         >
             <div className={classes.projectCardHeader}>
                 <Avatar className={classes.projectAvatar} variant="rounded">
                     {capitalizeFirstLetter(category.title)}
                 </Avatar>
-                <Avatar className={classes.seeMore}>
-                    <ChevronRight size={15}/>
-                </Avatar>
+                <IconButton className={classes.seeMore}>
+                    <ChevronRight size={25}/>
+                </IconButton>
             </div>
             <div className={classes.projectTitle}>
                 <Typography variant="body2">

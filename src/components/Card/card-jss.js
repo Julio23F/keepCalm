@@ -17,7 +17,7 @@ const styles = {
           justifyContent: "space-between",
           textAlign: "center",
     },
-      projectAvatar: {
+    projectAvatar: {
         backgroundColor: "#1A1A1A",
         width: "25px",
         height: "25px",
@@ -35,7 +35,7 @@ const styles = {
         backgroundColor: "#E5E7EB",
         width: "25px",
         height: "25px",
-        fontSize: "0.7em"
+        // fontSize: "0.7em"
     },
 };
   

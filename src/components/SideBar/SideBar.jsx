@@ -12,7 +12,7 @@ const Sidebar = ({sideBarList}) => {
       return location.pathname.startsWith(route);
     };
     return (
-        <div className="w-64 bg-white border-r border-gray-200 p-4">
+      <div className="w-64 bg-white border-r border-gray-200 p-4" style={{position: "fixed", height: "100vh"}}>
         <div className="mb-8">
           <h1 className="text-xl font-bold">KeepCalm.</h1>
         </div>

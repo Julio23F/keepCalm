@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, Typography, Box, IconButton, Chip, Avatar } from "@mui/material";
-import { X, Clock } from "lucide-react";
+import { X, Clock, Pencil } from "lucide-react";
 import { createUseStyles } from "react-jss";
 import styles from "./modal-jss";
 
@@ -24,7 +24,7 @@ const ProjectModal = ({ open, onClose }) => {
 
                 {/* Status & Date */}
                 <Box display="flex" alignItems="center" gap={1} mt={1}>
-                    <Chip label="Encours" className={classes.chip} />
+                    <Chip label="En cours" className={classes.chip} />
                     <Chip 
                         className={classes.chipDate} 
                         icon={<Clock size={20} color='grey' />} 
@@ -51,9 +51,15 @@ const ProjectModal = ({ open, onClose }) => {
                 </Box>
 
                 {/* Description */}
-                <Typography variant="h6" className={classes.sectionTitle}>
-                    Description
-                </Typography>
+                <Box className={classes.descriptionProject}>
+                    <Typography variant="h6">
+                        Description
+                    </Typography>
+                    <IconButton className={classes.updateDescriptionIcon}>
+                        <Pencil size={15} color="#1A1A1A" />
+                    </IconButton>
+                </Box>
+                
                 <Typography variant="body2" color="textSecondary">
                     Specializes in the diagnosis and treatment of diseases related to the endocrine system, which includes glands and organs that produce hormones.
                 </Typography>
@@ -67,10 +73,10 @@ const ProjectModal = ({ open, onClose }) => {
                     <Avatar>J</Avatar>
                     <Box>
                         <Typography fontSize={14} fontWeight="bold">
-                            John Smith
+                            FARALAHY Julio
                         </Typography>
                         <Typography className={classes.memberText}>
-                            I want a complete diet plan.
+                            Dev
                         </Typography>
                     </Box>
                 </Box>
@@ -79,10 +85,10 @@ const ProjectModal = ({ open, onClose }) => {
                     <Avatar>J</Avatar>
                     <Box>
                         <Typography fontSize={14} fontWeight="bold">
-                            John Smith
+                            FARALAHY Julio
                         </Typography>
                         <Typography className={classes.memberText}>
-                            Do you have any update?
+                            Dev
                         </Typography>
                     </Box>
                 </Box>

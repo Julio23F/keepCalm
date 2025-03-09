@@ -28,7 +28,7 @@ const AdminLayout = ({ children, sideBarList }) => {
         <div className="flex h-screen bg-gray-50">
           {/* Sidebar */}
           <Sidebar sideBarList={sideBarList} />
-          <div className="flex-1 p-8">
+          <div className="flex-1 p-8" style={{marginLeft: "250px"}}>
             <HeaderSection label={headerType.label} />
             <section>
               {children}

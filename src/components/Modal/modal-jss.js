@@ -11,11 +11,17 @@ const styles = {
     chip: {
         backgroundColor: "#d7f5c3",
         color: "#000",
+        fontSize: "0.7em",
+        height: "30px",
+        // fontWeight: "600"
     },
     chipDate: {
         backgroundColor: "transparent",
         color: "grey",
-        border: "1px solid #E5E7EB"
+        border: "1px solid #E5E7EB",
+        fontSize: "0.7em",
+        height: "30px",
+
     },
     dateText: {
         color: "gray",
@@ -40,8 +46,23 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
     },
-    sectionTitle: {
+    descriptionProject: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
         marginTop: 24,
+        marginBottom: 10
+    },
+    updateDescriptionIcon: {
+        backgroundColor: "#E5E7EB", 
+        borderRadius: "7px",
+        '&:hover': {
+            backgroundColor: '#D1D5DB', 
+        },
+    },
+    sectionTitle: {
+        marginTop: 34,
+        marginBottom: 10
     },
     memberContainer: {
         display: "flex",

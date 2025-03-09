@@ -10,12 +10,13 @@ import ProjectCard from "../../../components/Card/ProjectCard";
 import ModalModal from "../../../components/Modal/ProjectModal";
 import { createUseStyles } from "react-jss";
 import styles from './dashboard-jss'; 
+import ProfileMember from '../../../components/Table/ProfileMember';
 const useStyles = createUseStyles(styles);
 
 const Dashboard = () => {
   const classes = useStyles();
 
-  const [tasks, setTasks] = useState([
+  const members = [
     {
       id: 1,
       title: "Schedule Me An Appointment With My Endocrine...",
@@ -32,7 +33,7 @@ const Dashboard = () => {
       priority: "Medium",
       daysLeft: 12,
     },
-  ]);
+  ];
 
   const listProjects = [
     {title: "LAF" },
@@ -65,7 +66,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Tasks */}
+      {/* members */}
         <div className={classes.container}>
             <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
@@ -80,35 +81,12 @@ const Dashboard = () => {
             </button>
             </div>
 
-            {/* Task List */}
+            {/* member List */}
             <div className="space-y-4">
-            {tasks.map((task) => (
-                <div key={task.id} className={classes.taskCard}>
-                <div>
-                    <h4 className={classes.taskTitle}>{task.title}</h4>
-                    <p className={classes.taskCategory}>{task.category}</p>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <Avatar className={classes.memberStatus} variant="rounded">
-                        {task.status}
-                    </Avatar>
-                    <Avatar className={classes.memberStatus} variant="rounded">
-                        {task.priority}
-                    </Avatar>
-                    {/* <span className={`${classes.taskLabel} 
-                    ${task.status === 'In Review' ? 'bg-purple-100 text-purple-600' :
-                        task.status === 'Draft' ? 'bg-gray-100 text-gray-600' : ''}`}>
-                    {task.status}
-                    </span>
-                    <span className={`${classes.taskLabel} 
-                    ${task.priority === 'High' ? 'bg-red-100 text-red-600' :
-                        task.priority === 'Medium' ? 'bg-yellow-100 text-yellow-600' : ''}`}>
-                    {task.priority}
-                    </span> */}
-                    <span className={classes.taskDaysLeft}>{task.daysLeft} Days left</span>
-                    <MoreHorizontal size={20} className={classes.icon} />
-                </div>
-                </div>
+            {members.map((member) => (
+                <ProfileMember
+                    member={member}
+                />
             ))}
             </div>
         </div>

@@ -15,7 +15,7 @@ const HeaderSection = ({label}) => {
 
     return (
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-2xl font-semibold text-[#34394b]">{label}</h2>
+          <h2 className="text-2xl font-semibold text-[#34394b]">{label && label}</h2>
           <div className="flex items-center space-x-4">
             <ToggleSwitch
               disabled={false}   

@@ -100,6 +100,16 @@ const styles = {
       alignItems: 'center',
       marginTop: '0.5rem',
     },
+
+    buttonAddMenu: {
+      backgroundColor: '#1A1A1A',
+      color: 'white',
+      padding: '0.5rem 1rem', 
+      borderRadius: '0.375rem',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem', 
+    },
 };
 
 export default styles;

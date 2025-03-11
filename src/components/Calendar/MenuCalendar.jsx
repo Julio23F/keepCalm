@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users } from 'lucide-react';
+import { Users, Plus } from 'lucide-react';
 import { createUseStyles } from "react-jss";
 import styles from './calendar-jss'; 
 
@@ -67,10 +67,14 @@ const MenuCalendar = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className={classes.title}>Menu calendar</h1>
           <div className="flex gap-4">
-            <div className="flex bg-[#25262b] rounded-md overflow-hidden">
+            {/* <div className="flex bg-[#25262b] rounded-md overflow-hidden">
               <button className="px-4 py-2 hover:bg-[#373a40] transition-colors">Week</button>
               <button className="px-4 py-2 bg-[#373a40]">Next</button>
-            </div>
+            </div> */}
+            <button className={classes.buttonAddMenu}>
+                <Plus size={20} />
+                <span>New Menu</span>
+            </button>
           </div>
         </div>
 

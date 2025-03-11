@@ -41,9 +41,9 @@ const AdminRoutes = () => {
     <AdminLayout sideBarList={sideBarList}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="admin/dashboard" element={<Dashboard />} />
-        <Route path="admin/members" element={<Dashboard />} />
-        <Route path="admin/menu" element={<Menu />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/members" element={<Dashboard />} />
+        <Route path="/menu" element={<Menu />} />
       </Routes>
     </AdminLayout>
   );

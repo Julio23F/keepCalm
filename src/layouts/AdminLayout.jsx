@@ -29,7 +29,7 @@ const AdminLayout = ({ children, sideBarList }) => {
           {/* Sidebar */}
           <Sidebar sideBarList={sideBarList} />
           <div className="flex-1 p-8" style={{marginLeft: "250px"}}>
-            <HeaderSection label={headerType.label} />
+            <HeaderSection label={headerType && headerType.label} />
             <section>
               {children}
             </section>

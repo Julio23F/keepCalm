@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../containers/AdminPages/Dashboard";
+import Menu from "../containers/AdminPages/Menu";
 import AdminLayout from "../layouts/AdminLayout";
 import { 
     LayoutDashboard, 
@@ -42,6 +43,7 @@ const AdminRoutes = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="admin/dashboard" element={<Dashboard />} />
         <Route path="admin/members" element={<Dashboard />} />
+        <Route path="admin/menu" element={<Menu />} />
       </Routes>
     </AdminLayout>
   );

@@ -25,11 +25,14 @@ const styles = {
     },
     projectTitle: {
         marginTop: "7px",
-        lineHeight: "0.5em"
+        lineHeight: "1em"
     },
       projectMember: {
         fontSize: '0.7rem',
         color: '#6B7280',
+        display: "flex",
+        alignItems: "start",
+        gap: "5px"
     },
     seeMore: {
         backgroundColor: "#E5E7EB",

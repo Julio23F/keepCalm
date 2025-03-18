@@ -4,9 +4,17 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../features/auth/authSlice";
 
 const Sidebar = ({sideBarList}) => {
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+      dispatch(logoutUser());
+    };
+    
 
     const isRouteActive = (route) => {
       return location.pathname.startsWith(route);
@@ -45,11 +53,12 @@ const Sidebar = ({sideBarList}) => {
             <Settings size={20} />
             <span>Settings</span>
           </div>
-          <div className="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg cursor-pointer">
+          <div onClick={handleLogout} className="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg cursor-pointer">
             <HelpCircle size={20} />
             <span>Help & Support</span>
           </div>
         </div>
+        
       </div>
     )
 }

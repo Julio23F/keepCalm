@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import AuthTheme from './AuthTheme';
+import { useDispatch, useSelector } from "react-redux";
+import { replace, useNavigate } from "react-router-dom";
+import { registerUser } from "../../features/auth/authSlice";
 
 import { createUseStyles } from "react-jss";
 import styles from './userPages-jss'; 
 const useStyles = createUseStyles(styles);
 function SignUp() {
     const classes = useStyles();
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { loading, isAuthenticated, user } = useSelector((state) => state.auth);
+
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -19,20 +27,42 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
+        dispatch(registerUser({ 
+            name: `${formData.firstName} ${formData.lastName}`, 
+            email: formData.email, 
+            password: formData.password
+        }));
     };
 
-    return (
-    <div className="min-h-screen w-full flex bg-[#1f1926]">
-        {/* Left Section - Hero Image */}
-        <AuthTheme />
 
+    // Rediriger l'utilisateur après la connexion
+    useEffect(() => {
+        if (isAuthenticated && user) {
+            if(!user.entreprise_id) {
+                navigate("/create-entreprise");
+                return;
+            }
+            switch (user.type) {
+                case "ADMIN":
+                    navigate("/admin/dashboard");
+                break;
+                case "USER":
+                    navigate("/user/dashboard");
+                break;
+                default:
+                    // navigate("/");
+            }
+        }
+    }, [isAuthenticated, user, navigate]);
+
+    return (
         <div className="w-full lg:w-1/2 p-8 md:p-12 flex items-center justify-center">
             <div className="w-full max-w-md space-y-8">
             <div className="text-center lg:text-left">
                 <h2 className="text-3xl font-semibold text-white mb-2">Create an account</h2>
                 <p className="text-gray-400">
                 Already have an account?{' '}
-                <a href="#" className="text-purple-400 hover:text-purple-300">Log in</a>
+                <span onClick={() => navigate("/login", { replace: true })} className="text-purple-400 hover:text-purple-300"  style={{cursor: "pointer"}}>Log in</span>
                 </p>
             </div>
 
@@ -134,7 +164,6 @@ function SignUp() {
             </form>
             </div>
         </div>
-    </div>
     );
 }
 

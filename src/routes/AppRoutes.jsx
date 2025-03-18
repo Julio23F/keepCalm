@@ -12,9 +12,10 @@ import { roleRoutes } from "../config/routeConfigs";
 import AuthRoute from "./AuthRoute";
 import PublicRoute from "./PublicRoute";
 import AuthLayout from "../layouts/AuthLayout";
+import Entreprise from "../containers/UserPages/Entreprise";
+
 
 export default function AppRoutes() {
-
   const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   return (
@@ -30,12 +31,12 @@ export default function AppRoutes() {
             path="/login"
             element={
               <AuthLayout>
-                  <LoginPage />
+                <LoginPage />
               </AuthLayout>
             }
           />
           <Route
-            path="/sign-up"
+            path="/register"
             element={
               <AuthLayout>
                 <SignUp />
@@ -45,16 +46,19 @@ export default function AppRoutes() {
         </Route>
 
         <Route element={<AuthRoute />}>
-          {/* <Route
+          <Route
             path="/"
             element={
-              isAuthenticated && user ? (
-                <Navigate to={roleRoutes[user.type] || "/login"} replace />
+              isAuthenticated && user.entreprise_id ? (
+                <Navigate to={roleRoutes[user.type]} replace />
               ) : (
                 <Navigate to="/login" replace />
               )
             }
-          /> */}
+          />
+          <Route path="/create-entreprise" element={
+            user && user.entreprise_id ? <Navigate to="/" replace /> : <Entreprise />
+          } />
           <Route path="/admin/*" element={<AdminRoutes />} />
         </Route>
       </Routes>

@@ -3,8 +3,8 @@ import {
   Search,
   Bell,
 } from 'lucide-react';
-import ToggleSwitch from "../../components/Switch/ToggleSwitch"
-
+import ToggleSwitch from "../../components/Switch/ToggleSwitch";
+import {getImageUrl} from "../../utils/images";
 const HeaderSection = ({label}) => {
   const [isToggled, setIsToggled] = useState(false);
 
@@ -27,7 +27,7 @@ const HeaderSection = ({label}) => {
             />
             <Bell size={24} className="text-gray-600 cursor-pointer" />
             <img
-              src="/vite.svg"
+              src={getImageUrl("avatar.png")}
               alt="Profile"
               className="w-8 h-8 rounded-full"
             />

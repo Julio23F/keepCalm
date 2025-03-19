@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "../containers/AdminPages/Dashboard";
 import Menu from "../containers/AdminPages/Menu";
 import AdminLayout from "../layouts/AdminLayout";
+import AddNewMember from "../containers/AdminPages/Member/AddNewMember"
 import { 
     LayoutDashboard, 
     UtensilsCrossed,
@@ -43,6 +44,7 @@ const AdminRoutes = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/members" element={<Dashboard />} />
+        <Route path="/members/add" element={<AddNewMember />} />
         <Route path="/menu" element={<Menu />} />
       </Routes>
     </AdminLayout>

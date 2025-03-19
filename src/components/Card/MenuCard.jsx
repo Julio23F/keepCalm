@@ -1,6 +1,3 @@
-import { 
-    ChevronRight
-} from 'lucide-react';
 import { Typography, IconButton, Avatar } from '@mui/material';
 import { createUseStyles } from "react-jss";
 import styles from './card-jss'; 

@@ -7,18 +7,9 @@ const theme = createTheme({
       dark: "#333333",
     },
     secondary: {
-      main: "#f50057",
+      main: "#192948",
     },
   },
-  // components: {
-  //   MuiTypography: {
-  //     defaultProps: {
-  //       variantMapping: {
-          
-  //       },
-  //     },
-  //   },
-  // },
 });
 
 export default theme;

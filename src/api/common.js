@@ -3,8 +3,8 @@ import {
 } from "../config/api";
 import { getLocalToken } from "./localStorage";
 import { fetch } from "./fetch";
-import { useDispatch } from "react-redux";
 import { setLoading } from "../features/network/loadingSlice";
+import { store } from "../store/store";
 
 const getUrl = function(path, params = {}) {
     const url = new URL(`${restApiSettings.baseURL}${path}`);
@@ -46,7 +46,6 @@ export const query = async function (
   skipNotify = true,
   skipNetworkStatus = false
 ) {
-  const dispatch = useDispatch();
 
   let res = null;
   const isDevEnv = process.env.NODE_ENV === "development";
@@ -70,11 +69,14 @@ export const query = async function (
     options.headers.Authorization = `Bearer ${token}`;
   }
   const url = getUrl(path, options.searchParams || {});
+
+  store.dispatch(setLoading(true));
+  console.log("options.headers.Authorization", options.headers.Authorization)
+
   try {
-    console.log("options.headers.Authorization", options.headers.Authorization)
     console.log("url", url)
     console.log("options", options)
-    dispatch(setLoading(true));
+
     const response = await fetch(url, options);
     console.log("response", response)
 
@@ -136,6 +138,6 @@ export const query = async function (
       staticStore.dispatch(setNotify({ open: true, type: "error", message }));
     return { status, error: errorMessage };
   } finally {
-    dispatch(setLoading(false));
+    store.dispatch(setLoading(false));
   }
 };

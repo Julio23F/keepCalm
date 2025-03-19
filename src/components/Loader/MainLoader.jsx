@@ -3,15 +3,22 @@ import { useSelector } from 'react-redux';
 import { CircularProgress } from "@mui/material";
 
 const MainLoader = () => {
-    const { isLoading } = useSelector((state) => state);
-    console.log("isLoading_dz", isLoading)
-    if (!isLoading) return null;
+    // const { isLoading } = useSelector((state) => state.loading.isLoading);
+    const isLoading = useSelector((state) => state.loading.isLoading);
 
-    return (
-        <div style={styles.overlay}>
-        <CircularProgress size={100} sx={{ color: "#fff" }} />
-        </div>
-    );
+    const isLoadingAuth = useSelector((state) => state.auth.loading);
+
+    console.log("isLoading_dz", isLoading) 
+    if (isLoading || isLoadingAuth) {
+        return (
+            <div style={styles.overlay}>
+                <CircularProgress size={100} sx={{ color: "#fff" }} />
+            </div>
+        );
+    }
+        
+    
+    return null;
 };
 
 const styles = {

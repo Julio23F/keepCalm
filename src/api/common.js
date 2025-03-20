@@ -71,8 +71,6 @@ export const query = async function (
   const url = getUrl(path, options.searchParams || {});
 
   store.dispatch(setLoading(true));
-  console.log("options.headers.Authorization", options.headers.Authorization)
-
   try {
     console.log("url", url)
     console.log("options", options)

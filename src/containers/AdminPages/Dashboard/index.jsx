@@ -11,10 +11,12 @@ import ModalModal from "../../../components/Modal/ProjectModal";
 import { createUseStyles } from "react-jss";
 import styles from './dashboard-jss'; 
 import ProfileMember from '../../../components/Table/ProfileMember';
+import { useNavigate } from 'react-router-dom';
 const useStyles = createUseStyles(styles);
 
 const Dashboard = () => {
   const classes = useStyles();
+  const nav = useNavigate();
 
   const members = [
     {
@@ -75,10 +77,11 @@ const Dashboard = () => {
                 <span className="text-gray-400">Hide</span>
                 <MoreHorizontal size={20} className={classes.icon} />
             </div>
-            <button className={classes.button}>
+            <button className={classes.button} onClick={() => nav('add')}>
                 <Plus size={20} />
                 <span>New Member</span>
             </button>
+
             </div>
 
             {/* member List */}

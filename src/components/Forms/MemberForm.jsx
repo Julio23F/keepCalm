@@ -4,11 +4,8 @@ import { connect } from "react-redux";
 import { RadioGroup, FormControlLabel, Radio, Tooltip, TextField,
   Button,
   ButtonGroup,
-  Paper,
-  Typography,
   FormControl,
   FormLabel,
-  InputLabel,
   Select,
   MenuItem
 } from "@mui/material";
@@ -19,43 +16,25 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles(styles);
 
 const MemberForm = ({
-  handleSubmit,
+  onSubmit,
   errors,
-  formValues,
+  statusList,
+  onChange,
+  formData,
   okLabel,
-  cancelLabel,
-  havingSystemValue,
   onCancel,
-  noticeText,
-  havingSystem,
-  onChangeHaving,
-  dispatch,
 }) => {
   const classes = useStyles();
-  const [showHaving, setShowHaving] = useState(
-    parseFloat(havingSystemValue) ? true : false
-  );
-  const [exceedError, setExceedError] = useState(false);
 
-  const StatusList = [
-    {
-      id: 1,
-      name: "CDI (Contrat à durée indeterminé)",
-      frequence: "Présentielle"
-    },
-    {
-      id: 2,
-      name: "CDD (Contrat à durée determiné)",
-      frequence: "Présentielle"
-    },
-    {
-      id: 3,
-      name: "Alternant",
-      frequence: "3 semainde en présentielle et 2 semaine d'absence"
-    },
-  ];
+  const handleChange = (e) => {
+    onChange({
+      ...formData, 
+      [e.target.name]: e.target.value
+    })
+  }
+  
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <Grid container spacing={3}>
         <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
           <FormLabel component="legend">Prénom *</FormLabel>
@@ -69,6 +48,7 @@ const MemberForm = ({
             helperText={errors.first_name}
             validate={true}
             className={classes.formControl}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
@@ -76,7 +56,6 @@ const MemberForm = ({
           <TextField
             labelId="name-label"
             fullWidth
-            // label="Nom"
             name="last_name"
             variant="outlined"
             placeholder="Entrer nom"
@@ -84,32 +63,75 @@ const MemberForm = ({
             helperText={errors.last_name}
             validate={true}
             className={classes.formControl}
+            onChange={handleChange}
           />
         </Grid>
       </Grid>
       <br/>
       <Grid container spacing={3}>
         <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+          <FormLabel component="legend">Email *</FormLabel>
+          <TextField
+            labelId="email-label"
+            fullWidth
+            name="email"
+            variant="outlined"
+            placeholder="Entrer email"
+            error={!!errors.email}
+            helperText={errors.email}
+            validate={true}
+            className={classes.formControl}
+            onChange={handleChange}
+          />
+        </Grid>
+        {/* <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
           <FormLabel component="legend">Âge de l'employé *</FormLabel>
-          <FormControl fullWidth className={classes.formControl} error={!!errors.age}>
-          <Select
-            name="age"
-            // value={values.age || ""}
-            // onChange={handleChange}
-            displayEmpty
-            renderValue={(selected) => selected || "Choisir l'âge"}
-          >
-            <MenuItem value="" disabled>
-              Choisir l'âge
-            </MenuItem>
-            {Array.from({ length: 46 }, (_, i) => 15 + i).map((age) => (
-              <MenuItem key={age} value={age}>
-                {age}
+            <FormControl fullWidth className={classes.formControl} error={!!errors.age}>
+            <Select
+              name="age"
+              value={formData.age || ""}
+              onChange={handleChange}
+              displayEmpty
+              renderValue={(selected) => selected || "Choisir l'âge"}
+            >
+              <MenuItem value="" disabled>
+                Choisir l'âge
               </MenuItem>
-            ))}
-          </Select>
-          {errors.age && <FormHelperText>{errors.age}</FormHelperText>}
-        </FormControl>
+              {Array.from({ length: 46 }, (_, i) => 15 + i).map((age) => (
+                <MenuItem key={age} value={age}>
+                  {age}
+                </MenuItem>
+              ))}
+            </Select>
+            {errors.age && <FormHelperText>{errors.age}</FormHelperText>}
+          </FormControl>
+
+        </Grid> */}
+      </Grid>
+      <br/>
+
+      <Grid container spacing={3}>
+        <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+          <FormLabel component="legend">Âge de l'employé *</FormLabel>
+            <FormControl fullWidth className={classes.formControl} error={!!errors.age}>
+            <Select
+              name="age"
+              value={formData.age || ""}
+              onChange={handleChange}
+              displayEmpty
+              renderValue={(selected) => selected || "Choisir l'âge"}
+            >
+              <MenuItem value="" disabled>
+                Choisir l'âge
+              </MenuItem>
+              {Array.from({ length: 46 }, (_, i) => 15 + i).map((age) => (
+                <MenuItem key={age} value={age}>
+                  {age}
+                </MenuItem>
+              ))}
+            </Select>
+            {errors.age && <FormHelperText>{errors.age}</FormHelperText>}
+          </FormControl>
 
         </Grid>
       </Grid>
@@ -123,8 +145,8 @@ const MemberForm = ({
               <FormLabel component="legend">Genre *</FormLabel>
               <RadioGroup
                 name="sex"
-                // value={values.sex}
-                // onChange={handleChange} 
+                value={formData.sex}
+                onChange={handleChange} 
               >
                 <FormControlLabel value="male" control={<Radio />} label="Homme" />
                 <FormControlLabel value="female" control={<Radio />} label="Femme" />
@@ -136,10 +158,11 @@ const MemberForm = ({
               <FormLabel component="legend">Status *</FormLabel>
               <RadioGroup
                   name="status"
-                  // value={selectedstatus}
-                  // onChange={(e) => setSelectedstatus(e.target.value)}
+                  value={formData.status}
+                  onChange={handleChange} 
+
               >
-                {StatusList.map((status) => (
+                {statusList.map((status) => (
                   <Tooltip
                     key={status.id}
                     title={
@@ -153,7 +176,7 @@ const MemberForm = ({
                     placement="right"
                   >
                     <FormControlLabel
-                      value={status.id.toString()}
+                      value={status.name.toString()}
                       control={<Radio />}
                       label={status.name}
                     />
@@ -170,30 +193,21 @@ const MemberForm = ({
               >
                 <Button
                   variant="contained"
-                  color="secondary"
-                  type={exceedError ? "button" : "submit"}
-                >
-                  {okLabel}
-                </Button>
-                <Button
-                  variant="contained"
                   className={classes.cancelButton}
                   onClick={onCancel}
                 >
                   Annuler
                 </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  type="submit"
+                >
+                  {okLabel}
+                </Button>
               </ButtonGroup>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item size={{ xs:12 }}>
-          {noticeText && (
-            <Paper square elevation={0} className={classes.noticePaper}>
-              <Typography variant="body2">
-                {ReactHtmlParser(noticeText)}
-              </Typography>
-            </Paper>
-          )}
         </Grid>
       </Grid>
     </form>

@@ -47,14 +47,9 @@ const AddNewMember = ({ history, }) => {
         console.log("resMember")
 
         const resMember = await apiCreateMember(newMember);
-        console.log("resMember", resMember)
-        console.log("resMember")
-        console.log("resMember")
-        console.log("resMember")
-        console.log("resMember")
 
         if (resMember && !resMember.error) {
-            nav('../members');
+            nav('/admin/members');
         } else {
           resMember.error && setErrors(resMember.error);
         }

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Filter,
   SortAsc,
   MoreHorizontal,
   Plus,
 } from 'lucide-react';
-import Avatar from '@mui/material/Avatar';
+import {Box} from "@mui/material";
+
+import {apiGetMembers} from "../../../api/member";
 import ProjectCard from "../../../components/Card/ProjectCard";
 import ModalModal from "../../../components/Modal/ProjectModal";
 import { createUseStyles } from "react-jss";
@@ -17,25 +19,38 @@ const useStyles = createUseStyles(styles);
 const Dashboard = () => {
   const classes = useStyles();
   const nav = useNavigate();
+  const [members, setMembers] = useState();
 
-  const members = [
-    {
-      id: 1,
-      title: "Schedule Me An Appointment With My Endocrine...",
-      category: "Appointment",
-      status: "In Review",
-      priority: "High",
-      daysLeft: 5,
-    },
-    {
-      id: 2,
-      title: "Track Medicine Delivery",
-      category: "Medical",
-      status: "Draft",
-      priority: "Medium",
-      daysLeft: 12,
-    },
-  ];
+  const getMembers = async ()  => {
+    const resMember = await apiGetMembers();
+
+    if (resMember) {
+      console.log("resMember", resMember)
+      setMembers(resMember)
+    }
+  }
+
+  useEffect(() => {
+    getMembers();
+  }, [])
+  // members = [
+  //   {
+  //     id: 1,
+  //     title: "Schedule Me An Appointment With My Endocrine...",
+  //     category: "Appointment",
+  //     status: "In Review",
+  //     priority: "High",
+  //     daysLeft: 5,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Track Medicine Delivery",
+  //     category: "Medical",
+  //     status: "Draft",
+  //     priority: "Medium",
+  //     daysLeft: 12,
+  //   },
+  // ];
 
   const listProjects = [
     {title: "LAF" },
@@ -56,47 +71,45 @@ const Dashboard = () => {
   return (
     <>
       {/* Categories */}
-      <div className={classes.container}>
+      <Box className={classes.container}>
         <h3 className={classes.title}>Projects</h3>
-        <div className="grid grid-cols-4 gap-4">
+        <Box className="grid grid-cols-4 gap-4">
           {listProjects.map((category, index) => (
             <ProjectCard 
                 category={category}
                 onClick={handleClickOpen}
             />
           ))}
-        </div>
-      </div>
+        </Box>
+      </Box>
+      <Box className={classes.container}>
+          <Box className="flex items-center justify-between mb-6">
+          <Box className="flex items-center space-x-4">
+              <Filter size={20} className={classes.icon} />
+              <SortAsc size={20} className={classes.icon} />
+              <span className="text-gray-400">Hide</span>
+              <MoreHorizontal size={20} className={classes.icon} />
+          </Box>
+          <button className={classes.button} onClick={() => nav('/admin/members/add')}>
+              <Plus size={20} />
+              <span>New Member</span>
+          </button>
 
-      {/* members */}
-        <div className={classes.container}>
-            <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-4">
-                <Filter size={20} className={classes.icon} />
-                <SortAsc size={20} className={classes.icon} />
-                <span className="text-gray-400">Hide</span>
-                <MoreHorizontal size={20} className={classes.icon} />
-            </div>
-            <button className={classes.button} onClick={() => nav('add')}>
-                <Plus size={20} />
-                <span>New Member</span>
-            </button>
+          </Box>
 
-            </div>
-
-            {/* member List */}
-            <div className="space-y-4">
-            {members.map((member) => (
-                <ProfileMember
-                    member={member}
-                />
-            ))}
-            </div>
-        </div>
-        <ModalModal 
-            open={open}
-            onClose={() => setOpen(false)}
-        />
+          {/* member List */}
+          <Box className="space-y-4">
+          {members && members.map((member) => (
+              <ProfileMember
+                  member={member}
+              />
+          ))}
+          </Box>
+      </Box>
+      <ModalModal 
+          open={open}
+          onClose={() => setOpen(false)}
+      />
     </>
   );
 };

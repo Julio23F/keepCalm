@@ -20,8 +20,6 @@ export const jsonQuery = async function (
   method,
   data,
   useToken = true,
-  skipNotify = true,
-  skipNetworkStatus = false
 ) {
   return await query(
     path,
@@ -34,8 +32,6 @@ export const jsonQuery = async function (
       data,
     },
     useToken,
-    skipNotify,
-    skipNetworkStatus
   );
 };
 
@@ -43,8 +39,6 @@ export const query = async function (
   path,
   options = {},
   useToken = true,
-  skipNotify = true,
-  skipNetworkStatus = false
 ) {
 
   let res = null;

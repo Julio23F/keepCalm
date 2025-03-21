@@ -26,16 +26,29 @@ const AdminLayout = ({ children, sideBarList }) => {
 
   return (
     <>
-        <Box className="flex h-screen bg-gray-50">
-          <HeaderSection label={headerType && headerType.label} />
-          {/* Sidebar */}
-          <Sidebar sideBarList={sideBarList} />
-          <Box className="flex-1 py-4 px-8" style={{marginLeft: "250px", marginTop: "10vh" }}>
-            <section>
-              {children}
-            </section>
-          </Box>
+      <Box className="flex h-screen bg-gray-50">
+        <HeaderSection label={headerType && headerType.label} />
+        <Sidebar sideBarList={sideBarList} />
+        <Box className="flex-1 py-4 px-3" style={{ margin: "0 245px", marginTop: "10vh" }}>
+          <section>
+            {children}
+          </section>
         </Box>
+        <div 
+          className="w-60 border-l border-gray-200"
+          style={{
+            backgroundColor: "white",
+            position: "fixed",
+            height: "100vh",
+            right: 0,
+            top: 0 
+          }}
+        >
+          <div className="flex-1 py-4 px-3" style={{ marginTop: "10vh" }}>
+            Calendar
+          </div>
+        </div>
+      </Box>
     </>
   );
 };

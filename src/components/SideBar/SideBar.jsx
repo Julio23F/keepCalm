@@ -21,7 +21,7 @@ const Sidebar = ({sideBarList}) => {
       return location.pathname.startsWith(route);
     };
     return (
-      <Box className="w-64 bg-white border-r border-gray-200 p-4" style={{position: "fixed", height: "100vh"}}>
+      <Box className="w-60 bg-white border-r border-gray-200 p-4" style={{position: "fixed", height: "100vh"}}>
         <Box className="space-y-1" style={{marginTop: "9vh"}}>
           {sideBarList.map((page, index) => (
             <Link to={page.route}>

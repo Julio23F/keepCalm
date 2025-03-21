@@ -36,7 +36,7 @@ const MemberForm = ({
   return (
     <form onSubmit={onSubmit}>
       <Grid container spacing={3}>
-        <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+        <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
           <FormLabel component="legend">Prénom *</FormLabel>
           <TextField
             labelId="firstname-label"
@@ -51,7 +51,7 @@ const MemberForm = ({
             onChange={handleChange}
           />
         </Grid>
-        <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+        <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
           <FormLabel component="legend">Nom *</FormLabel>
           <TextField
             labelId="name-label"
@@ -69,7 +69,7 @@ const MemberForm = ({
       </Grid>
       <br/>
       <Grid container spacing={3}>
-        <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+        <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
           <FormLabel component="legend">Email *</FormLabel>
           <TextField
             labelId="email-label"
@@ -84,7 +84,7 @@ const MemberForm = ({
             onChange={handleChange}
           />
         </Grid>
-        {/* <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+        {/* <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
           <FormLabel component="legend">Âge de l'employé *</FormLabel>
             <FormControl fullWidth className={classes.formControl} error={!!errors.age}>
             <Select
@@ -111,7 +111,7 @@ const MemberForm = ({
       <br/>
 
       <Grid container spacing={3}>
-        <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+        <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
           <FormLabel component="legend">Âge de l'employé *</FormLabel>
             <FormControl fullWidth className={classes.formControl} error={!!errors.age}>
             <Select
@@ -140,7 +140,7 @@ const MemberForm = ({
       <Grid container spacing={3}>
         <Grid item size={{ xs:12 }}>
           <Grid container spacing={3} style={{marginTop: "15px"}}>
-            <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+            <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
             <FormControl component="fieldset" className={classes.formControl} error={!!errors.sex}>
               <FormLabel component="legend">Genre *</FormLabel>
               <RadioGroup
@@ -154,7 +154,7 @@ const MemberForm = ({
               {errors.sex && <p style={{ color: "red", fontSize: "0.8rem" }}>{errors.sex}</p>}
             </FormControl>
             </Grid>
-            <Grid item size={{ xl:3, md:4, sm:6, xs:12 }}>
+            <Grid item size={{ xl:3, md:5, sm:6, xs:12 }}>
               <FormLabel component="legend">Status *</FormLabel>
               <RadioGroup
                   name="status"

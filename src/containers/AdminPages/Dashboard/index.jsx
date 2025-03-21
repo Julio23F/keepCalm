@@ -5,8 +5,10 @@ import {
   MoreHorizontal,
   Plus,
 } from 'lucide-react';
-import {Box} from "@mui/material";
-
+import { 
+  Button,
+  Box
+} from "@mui/material";
 import {apiGetMembers} from "../../../api/member";
 import ProjectCard from "../../../components/Card/ProjectCard";
 import ModalModal from "../../../components/Modal/ProjectModal";
@@ -90,10 +92,21 @@ const Dashboard = () => {
               <span className="text-gray-400">Hide</span>
               <MoreHorizontal size={20} className={classes.icon} />
           </Box>
-          <button className={classes.button} onClick={() => nav('/admin/members/add')}>
+          {/* <button className={classes.button} onClick={() => nav('/admin/members/add')}>
               <Plus size={20} />
               <span>New Member</span>
-          </button>
+          </button> */}
+          <Button
+              variant="contained"
+              color="primary"
+              onClick={() => nav('/admin/members/add')}
+              sx={{
+                textTransform: 'capitalize'
+              }}
+            >
+              <Plus size={20} />
+              <span>New Member</span>
+            </Button>
 
           </Box>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy} from "react";
 import MemberForm from "../../../components/Forms/MemberForm";
-import { Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import styles from "./member-jss";
@@ -57,22 +57,22 @@ const AddNewMember = ({ history, }) => {
 
     return (
         <>
-        <Paper square elevation={0} component="main" className={classes.section} style={{padding: "2em"}}>
-            <p className={classes.commentText}>
-            Veuillez entrer les informations de l'employé. Tous les champs sont à remplir.
-            </p>
-            <br/>
-            <MemberForm
-                okLabel="Ajouter l'employé"
-                initialValues={{}}
-                onSubmit={handleAddNew}
-                onChange={setFormData}
-                formData={formData}
-                errors={"errors"}
-                onCancel={() => nav('../members')}
-                statusList={StatusList}
-            />
-        </Paper>
+          <Box className='border border-gray-200' style={{padding: "2em", backgroundColor:"white", borderRadius: "0.375rem",}}>
+              <p className={classes.commentText}>
+              Veuillez entrer les informations de l'employé. Tous les champs sont à remplir.
+              </p>
+              <br/>
+              <MemberForm
+                  okLabel="Ajouter l'employé"
+                  initialValues={{}}
+                  onSubmit={handleAddNew}
+                  onChange={setFormData}
+                  formData={formData}
+                  errors={"errors"}
+                  onCancel={() => nav('../members')}
+                  statusList={StatusList}
+              />
+          </Box>
         </>
     );
 };

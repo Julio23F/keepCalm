@@ -39,10 +39,10 @@ const HeaderSection = ({ label }) => {
         transition: "background-color 0.3s ease-in-out",
       }}
     >
-      <Grid item size={{ md: 3 }}>
+      <Grid item size={{ md: 2 }} >
         <h1 className="text-xl font-bold">KeepCalm.</h1>
       </Grid>
-      <Grid item size={{ md: 9 }} style={{ display: "flex", justifyContent: "space-between" }}>
+      <Grid item size={{ md: 10 }} style={{ display: "flex", justifyContent: "space-between", paddingLeft: "2em" }}>
         <h2 className="text-2xl font-semibold text-[#34394b]">{label && label}</h2>
         <div className="flex items-center space-x-4">
           <ToggleSwitch

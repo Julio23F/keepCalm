@@ -12,9 +12,12 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/lab": "^6.0.0-beta.31",
     "@mui/material": "^6.4.7",
+    "@mui/x-date-pickers": "^7.28.0",
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.2",
+    "dayjs": "^1.11.13",
     "immutable": "^5.0.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.344.0",

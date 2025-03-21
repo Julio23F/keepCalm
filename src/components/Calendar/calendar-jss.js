@@ -110,6 +110,34 @@ const styles = {
       alignItems: 'center',
       gap: '0.5rem', 
     },
+
+    dateCalendar: {
+      width: "100%", 
+      // backgroundColor: "red",
+      "& *": { 
+        fontSize: 12 
+      },
+      "& .css-1rl1vrc-MuiDayCalendar-header": {
+        height: "25px",
+        width: "240px"
+      },
+      "& .css-1pv2de5-MuiDayCalendar-weekContainer": {
+        height: "30px",
+        width: "240px"
+      },
+      "& .css-maujuc-MuiButtonBase-root-MuiPickersDay-root": {
+        height: "29px",
+        width: "30px"
+      },
+      "& .css-132wfuh-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)": {
+        height: "29px",
+        width: "30px"
+      },
+      "& .css-132wfuh-MuiButtonBase-root-MuiPickersDay-root.Mui-selected": {
+        height: "29px",
+        width: "30px"
+      }
+    }
 };
 
 export default styles;

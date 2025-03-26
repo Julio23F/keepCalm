@@ -8,10 +8,10 @@ import {Box} from "@mui/material";
 import styles from './table-jss'; 
 const useStyles = createUseStyles(styles);
 
-const ProfileMember = ({member}) => {
+const ProfileMember = ({member, ...props}) => {
     const classes = useStyles();
     return (
-        <Box key={member.id} className={classes.memberCard}>
+        <Box key={member.id} className={classes.memberCard} {...props}>
             <Box>
                 <h4 className={classes.memberTitle}>{member.name}</h4>
                 <p className={classes.memberCategory}>{member.email}</p>

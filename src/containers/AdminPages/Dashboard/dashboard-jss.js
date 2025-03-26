@@ -12,23 +12,6 @@ const styles = {
       color: '#6B7280', 
       marginBottom: '1rem', 
     },
-
-
-    
-    
-
-    
-
-    button: {
-      backgroundColor: '#1A1A1A',
-      color: 'white',
-      padding: '0.5rem 1rem', 
-      borderRadius: '0.375rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.5rem', 
-    },
-
 };
   
 export default styles;

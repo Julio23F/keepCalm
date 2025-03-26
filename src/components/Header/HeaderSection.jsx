@@ -35,7 +35,7 @@ const HeaderSection = ({ label }) => {
         height: "9vh",
         zIndex: 1,
         padding: "0 1em",
-        backgroundColor: isScrolled ? "white" : "transparent",
+        backgroundColor: isScrolled ? "white" : "white",
         transition: "background-color 0.3s ease-in-out",
       }}
     >

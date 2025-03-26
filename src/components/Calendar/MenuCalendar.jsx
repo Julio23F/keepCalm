@@ -70,14 +70,6 @@ const MenuCalendar = () => {
         <Box className="flex justify-between items-center mb-8">
           <h1 className={classes.title}>Menu calendar</h1>
           <Box className="flex gap-4">
-            {/* <Box className="flex bg-[#25262b] rounded-md overflow-hidden">
-              <button className="px-4 py-2 hover:bg-[#373a40] transition-colors">Week</button>
-              <button className="px-4 py-2 bg-[#373a40]">Next</button>
-            </Box> */}
-            {/* <button className={classes.buttonAddMenu}>
-                <Plus size={20} />
-                <span>New Menu</span>
-            </button> */}
             <Button
               variant="contained"
               color="primary"

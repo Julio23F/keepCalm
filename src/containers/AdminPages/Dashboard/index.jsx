@@ -9,6 +9,7 @@ import {
   Button,
   Box
 } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import {apiGetMembers} from "../../../api/member";
 import ProjectCard from "../../../components/Card/ProjectCard";
 import ModalModal from "../../../components/Modal/ProjectModal";
@@ -74,10 +75,28 @@ const Dashboard = () => {
     <>
       {/* Categories */}
       <Box className={classes.container}>
-        <h3 className={classes.title}>Projects</h3>
+        <Grid container spacing={3} className='mb-5'>
+          <Grid item size={{ md:6}}>
+          <h3 className={classes.title}>Projects</h3>
+          </Grid>
+          <Grid item size={{ md:6}} container justifyContent="flex-end">
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={() => nav('/admin/members/add')}
+                sx={{
+                  textTransform: 'capitalize'
+                }}
+              >
+                <Plus size={20} />
+                <span>New Project</span>
+              </Button>
+          </Grid>
+        </Grid>
         <Box className="grid grid-cols-4 gap-4">
           {listProjects.map((category, index) => (
-            <ProjectCard 
+            <ProjectCard
+                key={index} 
                 category={category}
                 onClick={handleClickOpen}
             />
@@ -92,28 +111,25 @@ const Dashboard = () => {
               <span className="text-gray-400">Hide</span>
               <MoreHorizontal size={20} className={classes.icon} />
           </Box>
-          {/* <button className={classes.button} onClick={() => nav('/admin/members/add')}>
-              <Plus size={20} />
-              <span>New Member</span>
-          </button> */}
           <Button
-              variant="contained"
-              color="primary"
-              onClick={() => nav('/admin/members/add')}
-              sx={{
-                textTransform: 'capitalize'
-              }}
-            >
-              <Plus size={20} />
-              <span>New Member</span>
-            </Button>
+            variant="contained"
+            color="primary"
+            onClick={() => nav('/admin/members/add')}
+            sx={{
+              textTransform: 'capitalize'
+            }}
+          >
+            <Plus size={20} />
+            <span>New Member</span>
+          </Button>
 
           </Box>
 
           {/* member List */}
           <Box className="space-y-4">
-          {members && members.map((member) => (
+          {members && members.map((member, index) => (
               <ProfileMember
+                  key={index}
                   member={member}
               />
           ))}

@@ -101,16 +101,6 @@ const styles = {
       marginTop: '0.5rem',
     },
 
-    buttonAddMenu: {
-      backgroundColor: '#1A1A1A',
-      color: 'white',
-      padding: '0.5rem 1rem', 
-      borderRadius: '0.375rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.5rem', 
-    },
-
     dateCalendar: {
       width: "100%", 
       // backgroundColor: "red",
@@ -125,18 +115,10 @@ const styles = {
         height: "30px",
         width: "240px"
       },
-      "& .css-maujuc-MuiButtonBase-root-MuiPickersDay-root": {
-        height: "29px",
-        width: "30px"
+      "& .MuiPickersDay-root": {
+        height: "27px",
+        width: "27px"
       },
-      "& .css-132wfuh-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)": {
-        height: "29px",
-        width: "30px"
-      },
-      "& .css-132wfuh-MuiButtonBase-root-MuiPickersDay-root.Mui-selected": {
-        height: "29px",
-        width: "30px"
-      }
     }
 };
 

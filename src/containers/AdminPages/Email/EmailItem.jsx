@@ -1,7 +1,6 @@
 const EmailItem = ({email}) => {
     return (
         <div className={`flex items-center p-4 hover:bg-gray-50 cursor-pointer ${!email.read && 'bg-blue-50'}`}>
-            <input type="checkbox" className="mr-4 rounded" />
             <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-4 ${!email.read ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>
                 {email.avatar}
             </div>

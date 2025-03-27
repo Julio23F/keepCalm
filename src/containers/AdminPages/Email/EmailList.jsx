@@ -1,8 +1,8 @@
 import { Search} from 'lucide-react';
 import EmailItem from './EmailItem';
 
-const EmailList = ({emails}) => {
-  const tags = ["React", "JavaScript", "CSS", "HTML", "Node.js"];
+const EmailList = ({emails, tags}) => {
+
 
   return(
       <div className="flex-1 bg-white">

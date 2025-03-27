@@ -7,49 +7,54 @@ import { Mail, Menu, Plus, MoreHorizontal, Hash, AtSign } from 'lucide-react';
 import EmailList from "./EmailList";
 import SidebarItem from "./SidebarItem";
 
-const emails = [
-  {
-    id: 1,
-    sender: 'Megan Jackson',
-    avatar: 'M',
-    subject: 'New project lead',
-    preview: 'Hey Edward, just getting in touch because I wanted to get...',
-    time: '5 min ago',
-    read: false,
-    labels: ['Work'],
-  },
-  {
-    id: 2,
-    sender: 'Jack Williamson',
-    avatar: 'J',
-    subject: 'New project lead',
-    preview: 'Hey Edward! Would be hard about our new pages for...',
-    time: '10:30am',
-    read: true,
-    labels: ['Work']
-  },
-  {
-    id: 3,
-    sender: 'Team - Digital Designers',
-    avatar: 'T',
-    subject: 'New project lead',
-    preview: 'Mitchell, we have some problems since our client wants to...',
-    time: '10:25am',
-    read: true,
-    labels: ['Applications', 'Team']
-  }
-];
 
 const Email = () => {
     const classes = useStyles();
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [activeSidebarItem, setActiveSidebarItem] = useState("Inbox"); 
     const [activeSubItem, setActiveSubItem] = useState("Important"); 
+    const initEmails = [
+        {
+          id: 1,
+          sender: 'Megan Jackson',
+          avatar: 'M',
+          subject: 'New project lead',
+          preview: 'Hey Edward, just getting in touch because I wanted to get...',
+          time: '5 min ago',
+          read: false,
+          labels: ['Work'],
+        },
+        {
+          id: 2,
+          sender: 'Jack Williamson',
+          avatar: 'J',
+          subject: 'New project lead',
+          preview: 'Hey Edward! Would be hard about our new pages for...',
+          time: '10:30am',
+          read: true,
+          labels: ['Work']
+        },
+        {
+          id: 3,
+          sender: 'Team - Digital Designers',
+          avatar: 'T',
+          subject: 'New project lead',
+          preview: 'Mitchell, we have some problems since our client wants to...',
+          time: '10:25am',
+          read: true,
+          labels: ['Applications', 'Team']
+        }
+    ];
+    const initTags = ["React", "JavaScript", "CSS", "HTML", "Node.js"];
+    const [emails, setEmails] = useState(initEmails);
+
+    const [tags, setTags] = useState(initTags);
 
     const handleSidebarItemClick = (text) => {
         setActiveSidebarItem(text);
         if(text == "Filter") {
             setIsFilterOpen(!isFilterOpen)
+            setActiveSubItem()
         }
         else{
             setIsFilterOpen(false)
@@ -59,6 +64,11 @@ const Email = () => {
     const handleSubItemClick = (text) => {
         setActiveSubItem(text);
     };
+
+    useEffect(()=>{
+        setEmails([initEmails[Math.floor(Math.random() * 3)], initEmails[Math.floor(Math.random() * 3)]]);
+        setTags([initTags[Math.floor(Math.random() * 5)], initTags[Math.floor(Math.random() * 5)]]);
+    },[activeSubItem])
 
     return (
     <div className="flex h-screen bg-gray-100">
@@ -107,6 +117,7 @@ const Email = () => {
         <div className="flex flex-1" style={{marginLeft: "255px"}}>
             <EmailList 
                 emails={emails}
+                tags={tags}
             />
         </div>
     </div>
